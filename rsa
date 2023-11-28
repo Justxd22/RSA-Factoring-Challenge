@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+"""Find factors reading input from a file."""
+
+
+import sys
+
+
+def factors(filename):
+    """Find factors from a file."""
+    with open(filename, 'r') as file:
+        n = int(file.read().strip())
+        nn = n
+        prime_factors = []
+        i = 2
+
+        while n > 1:
+            if n % i == 0:
+                prime_factors.append(i)
+                n //= i
+            else:
+                i += 1
+
+        if len(prime_factors) == 2:
+            print(f"{nn}={prime_factors[1]}*{prime_factors[0]}")
+        else:
+            print(f"{nn} is not the product of two prime numbers")
+
+
+factors(sys.argv[1])

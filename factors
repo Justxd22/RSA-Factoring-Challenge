@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+"""Find factors reading input from a file."""
+
+
+import sys
+
+
+def factors(filename):
+    """Find factors from a file."""
+    with open(filename, 'r') as file:
+        for line in file:
+            n = int(line.strip())
+            i = 2
+            while i <= n:
+                if n % i == 0:
+                    factor = n // i
+                    print(f"{n}={i}*{factor}")
+                    break
+                i += 1
+
+
+factors(sys.argv[1])

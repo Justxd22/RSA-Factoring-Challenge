@@ -2,7 +2,7 @@
 """Find factors reading input from a file."""
 
 
-import sys
+import sys, math
 
 
 def factors(filename):
@@ -11,12 +11,14 @@ def factors(filename):
         for line in file:
             n = int(line.strip())
             i = 2
-            while i <= n:
+            while i <= math.isqrt(n):
                 if n % i == 0:
                     factor = n // i
-                    print(f"{n}={i}*{factor}")
+                    print(f"{n}={factor}*{i}")
                     break
                 i += 1
+            else:
+                print(f"{n}={n}*1")
 
 
 factors(sys.argv[1])
